@@ -5,7 +5,8 @@ module Codebreak
       it 'must lost after 10th guess of turn' do
         input.stub(:gets){'1111'}
         output.should_receive(:puts).with(/You loose the game in \d+ turns/)
-        10.times { game.guess }
+        game.should_receive(:guess).at_least(10)
+        game.start
       end
     end
   end
