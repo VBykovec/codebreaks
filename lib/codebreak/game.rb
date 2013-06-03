@@ -1,12 +1,12 @@
 module Codebreak
   class Game
-    def initialize(output = $stdout, input = $stdin, secret = nil)
+    def initialize(output = $stdout, input = $stdin, secret = '')
       @output = output
       @input = input
-      @secret = secret || ''
-      if @secret == ''
-        arr = (1..6).to_a
-        4.times { @secret = @secret + arr.shuffle[0].to_s }
+      @secret = secret.chars || []
+      if @secret.empty?
+        arr = (1..6).to_a.map &:to_s
+        4.times {@secret.push arr.shuffle[0]}
       end
     end
     def start
@@ -14,6 +14,21 @@ module Codebreak
       @output.puts 'Enter guess:'
     end
     def guess 
+      val = @input.gets()
+      if val.length != 4
+        @output.puts 'Wrong count of digits'
+        return
+      end
+      rez = ''
+      val.chars.each_with_index do |c,i|
+        @secret.each_with_index do |s,idx|
+          if c == s
+            rez +=  (i == idx) ? '+' : '-'
+            break;
+          end
+        end
+      end
+      @output.puts rez
     end
   end
 end
