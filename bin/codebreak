@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'codebreak'
+game = Codebreak::Game.new
+game.start
