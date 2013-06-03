@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Codebreak::VERSION
   spec.authors       = ["Vitaliy Bykovec"]
   spec.email         = ["vbykovec@gmail.com"]
-  spec.description   = %q{Codebreak game with rspec tests}
+  spec.description   = %q{Codebreaker is a logic game in which a code-breaker tries to break a secret code created by a code-maker. The code-maker, which will be played by the application we’re going to write, creates a secret code of four numbers between 1 and 6.}
   spec.summary       = %q{Simple game}
   spec.homepage      = ""
   spec.license       = "MIT"
