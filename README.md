@@ -1,26 +1,5 @@
-# Codebreak
-
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'codebreak'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install codebreak
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
+For playing type 'codebreak'
+For hint  - type 'hint' in game
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
