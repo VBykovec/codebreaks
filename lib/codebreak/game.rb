@@ -5,22 +5,23 @@ module Codebreak
       @output = output
       @end_turn = turns
       @input = input
-      @secret = secret.chars || []
       @count = 0
+      @secret = secret.chars || []
     end
     def start
       @output.puts 'Welcome to Codebreak!'
       begin
+        @count = 0
         @output.puts 'Enter guess:'
         if @secret.empty?
           arr = (1..6).to_a.map &:to_s
           4.times {@secret.push arr.shuffle[0]}
         end
-
         @end_turn.times do |c|
           break if guess
           @output.puts "You loose the game in #{@count} turns" if c == @end_turn - 1
         end
+        secret = []
       end while continue_game?
       save_score
     end
@@ -29,7 +30,7 @@ module Codebreak
       false
     end
     def guess 
-      val = @input.gets()
+      val = @input.gets().chomp
       if val.length != 4
         @output.puts 'Wrong count of digits'
         return false
@@ -61,7 +62,7 @@ module Codebreak
 
     def continue_game?
       @output.puts('Play again (yes/no)?')
-      if YES_ANSWER.include? @input.gets
+      if YES_ANSWER.include? @input.gets.chomp
         true
       else
         exit_game
@@ -69,10 +70,10 @@ module Codebreak
     end
     def save_score
      @output.puts 'Save score to file (yes/no)?'
-     rez = @input.gets
-     if YES_ANSWER.include? @input.gets
+     rez = @input.gets.chomp
+     if YES_ANSWER.include? @input.gets.chomp
          File.open('score.txt','w') do |file|
-            file.puts "Game #{@count == @end_turn ? 'win' : 'loose'} in #{@count} turns"
+            file.puts "Game #{@count < @end_turn ? 'win' : 'loose'} in #{@count} turns"
          end
      end
     end
