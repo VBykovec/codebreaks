@@ -10,6 +10,7 @@ module Codebreak
       end
       it "prompts for the first guess" do
         output.should_receive(:puts).with('Enter guess:')
+        game.start
       end
     end
   end
