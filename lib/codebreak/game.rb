@@ -5,6 +5,7 @@ module Codebreak
     end
     def start
       @output.puts 'Welcome to Codebreak!'
+      @output.puts 'Enter guess:'
     end
   end
 end
