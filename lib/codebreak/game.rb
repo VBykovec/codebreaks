@@ -7,11 +7,13 @@ module Codebreak
       if @secret == ''
         arr = (1..6).to_a
         4.times { @secret = @secret + arr.shuffle[0].to_s }
-     end
+      end
     end
     def start
       @output.puts 'Welcome to Codebreak!'
       @output.puts 'Enter guess:'
+    end
+    def guess 
     end
   end
 end
